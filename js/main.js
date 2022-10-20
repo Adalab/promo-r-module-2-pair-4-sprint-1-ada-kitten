@@ -4,7 +4,7 @@ const kittenImageOne = "https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg";
 const kittenNameOne = "Anastacio";
 const kittenDescOne =
   "Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!";
-const kittenRaceOne = "British Shorthair";
+const kittenRaceOne = "";
 
 const kittenImageTwo =
   "https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg";
@@ -24,13 +24,35 @@ newForm.classList.remove("collapsed"); */
 
 const catList = document.querySelector(".js-list");
 
+let html = '';
+
+/* o creamos varias variables o los concicionales deben ir sobre cada li */
+if (kittenRaceOne === "") {
+  html = `No se ha especificado la raza`;
+} else {
+  html = kittenRaceOne;
+}
+
+if (kittenRaceTwo === "") {
+  html = `No se ha especificado la raza`;
+} else {
+  html = kittenRaceTwo;
+}
+
+if (kittenRaceOne === "") {
+  html = `No se ha especificado la raza`;
+} else {
+  html = kittenRaceOne;
+}
+
+
 /* Agregar el código del li desde HTMl 
 Repetir este proceso por cada gatito */
 const kittenOne = ` <li class="card">
 <article>
   <img class="card_img" src=${kittenImageOne} alt="gatito" />
   <h3 class="card_title">${kittenNameOne.toUpperCase()}</h3>
-  <h4 class="card_race">${kittenRaceOne}</h4>
+  <h4 class="card_race">${html}</h4>
   <p class="card_description">
   ${kittenDescOne}
   </p>
@@ -41,7 +63,7 @@ const kittenTwo = ` <li class="card">
 <article>
   <img class="card_img" src=${kittenImageTwo} alt="gatito" />
   <h3 class="card_title">${kittenNameTwo.toUpperCase()}</h3>
-  <h4 class="card_race">${kittenRaceTwo}</h4>
+  <h4 class="card_race">${html}</h4>
   <p class="card_description">
   ${kittenDescTwo}
   </p>
@@ -106,11 +128,3 @@ else{
 }
 
 
-let html = '';
-let race = '';
-
-if (kittenRaceOne === "") {
-  html = `No se ha especificado la raza`;
-} else {
-  html = race;
-}
