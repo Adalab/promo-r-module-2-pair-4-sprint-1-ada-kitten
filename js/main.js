@@ -62,25 +62,55 @@ const kittenThree = ` <li class="card">
 const content = kittenOne + kittenTwo + kittenThree;
 
 catList.innerHTML = content;
-
+/*  */
 const input_search_desc = document.querySelector(".js_in_search_desc");
-
+/* 
 input_search_desc.value = "Ruiseño";
 const descrSearchText = input_search_desc.value;
 
 input_search_desc.value = "Cariñoso";
 const descrSearchTextTwo = input_search_desc.value;
 
-// input_search_desc.value = "Antipático";
-// const descrSearchTextThree = input_search_desc.value;
-
-if (kittenDescOne.includes(descrSearchText)) {
-  console.log(kittenOne);
+input_search_desc.value = "Antipático";
+const descrSearchTextThree = input_search_desc.value; */
+/*  */
+if (input_search_desc.value === "Ruiseño") {
   catList.innerHTML = kittenOne;
-} else {
+} else if (input_search_desc.value === "Cariñoso"){
   catList.innerHTML = kittenTwo;
 }
+else if (input_search_desc.value === "Antipático")  {
+catList.innerHTML = kittenThree;
+ }
 
-// if (kittenDescThree.includes(descrSearchTextThree)) {
-//   catList.innerHTML = kittenThree;
-// }
+/*  input_search_desc.value = ''; */
+
+
+const newForm = document.querySelector('.js-new-form');
+
+/* newForm.classList.remove("collapsed"); */
+/* 
+if (newForm.classList("collapsed")){
+  newForm.classList.remove("collapsed");
+}
+else{
+  newForm.classList.add("collapsed");
+} */
+
+
+if (newForm.classList.contains("collapsed")){
+  newForm.classList.remove("collapsed");
+}
+else{
+  newForm.classList.add("collapsed");
+}
+
+
+let html = '';
+let race = '';
+
+if (kittenRaceOne === "") {
+  html = `No se ha especificado la raza`;
+} else {
+  html = race;
+}
