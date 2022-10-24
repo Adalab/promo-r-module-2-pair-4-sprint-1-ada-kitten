@@ -113,18 +113,9 @@ if (input_search_desc.value === 'Risueño') {
 //mostrar formulario
 
 const plus = document.querySelector(`.js-plus`);
+const newForm = document.querySelector('.js-new-form');
 
-plus.addEventListener('click', (event) => {
-  event.preventDefault();
-
-  const newForm = document.querySelector('.js-new-form');
-
-  if (newForm.classList.contains('collapsed')) {
-    newForm.classList.remove('collapsed');
-  } else {
-    newForm.classList.add('collapsed');
-  }
-});
+plus.addEventListener('click',handleClickNewCatForm);
 
 //Validar formulario nuevo gatito
 
@@ -132,8 +123,30 @@ const btnAdd = document.querySelector('.js-btn-add');
 
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
+const inputRace = document.querySelector('.js-input-race');
 const inputName = document.querySelector('.js-input-name');
 const labelMesageError = document.querySelector('.js-label-error');
+
+
+function renderKitten(url, desc, name, race){
+  console.log ('funciona'):
+/* 
+desc = inputDesc.value;
+ url=  inputPhoto.value;
+ name = inputName.value;
+ race = inputRace.value ;
+  
+  catList.innerHTML += ` <li class="card">
+  <article>
+    <img class="card_img" src=${url} alt="gatito" />
+    <h3 class="card_title">${name}</h3>
+    <h4 class="card_race">${race}</h4>
+    <p class="card_description">
+    ${desc}
+    </p>
+  </article>
+  </li>`; */
+}
 
 btnAdd.addEventListener('click', (event) => {
   event.preventDefault();
@@ -141,8 +154,11 @@ btnAdd.addEventListener('click', (event) => {
   const valueDesc = inputDesc.value;
   const valuePhoto = inputPhoto.value;
   const valueName = inputName.value;
+  const valueRace = inputRace.value;
 
-  if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+  renderKitten(url, desc, name, race);
+
+  if (valueDesc === '' || valuePhoto === '' || valueName === ''  || valueRace === '') {
     labelMesageError.innerHTML = 'Debe rellenar todos los valores';
   }
 });
@@ -157,6 +173,7 @@ const labelMessageErrorSearch = document.querySelector(
   '.js-label-error-search'
 );
 
+
 btnSearch.addEventListener('click', (event) => {
   event.preventDefault();
 
@@ -168,4 +185,56 @@ btnSearch.addEventListener('click', (event) => {
   }
 });
 
-//falta el punto 4
+//Cancelar formulario
+const btnCancel = document.querySelector('.js-btn-cancel');
+
+btnCancel.addEventListener('click', (event) => {
+
+  event.preventDefault();
+  newForm.classList.add('collapsed');
+
+  inputDesc.value = '';
+  inputPhoto.value = '';
+  inputName.value = '';
+  inputRace.value = '';
+
+
+});
+
+///Mostrar/ocultar el formulario nuevo gatito
+
+
+function showNewCatForm() {
+  newForm.classList.remove('collapsed');
+}
+function hideNewCatForm() {
+  newForm.classList.add('collapsed');
+}
+
+
+
+function handleClickNewCatForm (event){
+    event.preventDefault();
+    if (newForm.classList.contains('collapsed')) {
+       showNewCatForm();
+    } else {
+       hideNewCatForm();
+    }
+
+}
+
+/////  Crear el gatito en HTML
+
+function renderKitten(url, desc, name, race){
+  
+  catList.innerHTML += ` <li class="card">
+  <article>
+    <img class="card_img" src=${url} alt="gatito" />
+    <h3 class="card_title">${name}</h3>
+    <h4 class="card_race">${race}</h4>
+    <p class="card_description">
+    ${desc}
+    </p>
+  </article>
+  </li>`;
+}
