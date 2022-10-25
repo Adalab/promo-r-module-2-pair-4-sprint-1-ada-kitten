@@ -4,19 +4,19 @@ const kittenImageOne = 'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg';
 const kittenNameOne = 'Anastacio';
 const kittenDescOne =
   'Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!';
-const kittenRaceOne = '';
+const kittenRaceOne = 'British';
 
 const kittenImageTwo =
   'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg';
 const kittenNameTwo = 'Fiona';
 const kittenDescTwo = 'Cariñoso';
-const kittenRaceTwo = '';
+const kittenRaceTwo = 'Persa';
 
 const kittenImageThree =
   'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg';
 const kittenNameThree = 'Cielo';
 const kittenDescThree = 'Antipático';
-const kittenRaceThree = '';
+const kittenRaceThree = 'Burrito';
 
 /* const newForm = document.querySelector('.js-new-form');
 
@@ -115,7 +115,7 @@ if (input_search_desc.value === 'Risueño') {
 const plus = document.querySelector(`.js-plus`);
 const newForm = document.querySelector('.js-new-form');
 
-plus.addEventListener('click',handleClickNewCatForm);
+plus.addEventListener('click', handleClickNewCatForm);
 
 //Validar formulario nuevo gatito
 
@@ -127,10 +127,9 @@ const inputRace = document.querySelector('.js-input-race');
 const inputName = document.querySelector('.js-input-name');
 const labelMesageError = document.querySelector('.js-label-error');
 
-
-function renderKitten(url, desc, name, race){
-  console.log ('funciona'):
-/* 
+function renderKitten(url, desc, name, race) {
+  console.log('funciona');
+  /* 
 desc = inputDesc.value;
  url=  inputPhoto.value;
  name = inputName.value;
@@ -156,12 +155,19 @@ btnAdd.addEventListener('click', (event) => {
   const valueName = inputName.value;
   const valueRace = inputRace.value;
 
-  renderKitten(url, desc, name, race);
-
-  if (valueDesc === '' || valuePhoto === '' || valueName === ''  || valueRace === '') {
+  if (
+    valueDesc === '' ||
+    valuePhoto === '' ||
+    valueName === '' ||
+    valueRace === ''
+  ) {
     labelMesageError.innerHTML = 'Debe rellenar todos los valores';
+  } else {
+    renderKitten(valuePhoto, valueDesc, valueName, valueRace);
   }
 });
+
+//NOS QUEDAMOS AQUI!!!! NO FUNCIONA
 
 //Validar formulario búsqueda
 
@@ -173,8 +179,7 @@ const labelMessageErrorSearch = document.querySelector(
   '.js-label-error-search'
 );
 
-
-btnSearch.addEventListener('click', (event) => {
+const filterKitten = (event) => {
   event.preventDefault();
 
   const valueDescSearch = inputDescSearch.value;
@@ -183,13 +188,14 @@ btnSearch.addEventListener('click', (event) => {
   if (valueDescSearch === '' || valueRaceSearch === '') {
     labelMessageErrorSearch.innerHTML = 'Debe rellenar todos los valores';
   }
-});
+};
+
+btnSearch.addEventListener('click', filterKitten);
 
 //Cancelar formulario
 const btnCancel = document.querySelector('.js-btn-cancel');
 
-btnCancel.addEventListener('click', (event) => {
-
+const cancelNewKitten = (event) => {
   event.preventDefault();
   newForm.classList.add('collapsed');
 
@@ -197,12 +203,11 @@ btnCancel.addEventListener('click', (event) => {
   inputPhoto.value = '';
   inputName.value = '';
   inputRace.value = '';
+};
 
-
-});
+btnCancel.addEventListener('click', cancelNewKitten);
 
 ///Mostrar/ocultar el formulario nuevo gatito
-
 
 function showNewCatForm() {
   newForm.classList.remove('collapsed');
@@ -211,22 +216,18 @@ function hideNewCatForm() {
   newForm.classList.add('collapsed');
 }
 
-
-
-function handleClickNewCatForm (event){
-    event.preventDefault();
-    if (newForm.classList.contains('collapsed')) {
-       showNewCatForm();
-    } else {
-       hideNewCatForm();
-    }
-
+function handleClickNewCatForm(event) {
+  event.preventDefault();
+  if (newForm.classList.contains('collapsed')) {
+    showNewCatForm();
+  } else {
+    hideNewCatForm();
+  }
 }
 
 /////  Crear el gatito en HTML
 
-function renderKitten(url, desc, name, race){
-  
+function renderKitten(url, desc, name, race) {
   catList.innerHTML += ` <li class="card">
   <article>
     <img class="card_img" src=${url} alt="gatito" />
