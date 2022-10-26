@@ -9,13 +9,13 @@ const kittenRaceOne = 'British';
 const kittenImageTwo =
   'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg';
 const kittenNameTwo = 'Fiona';
-const kittenDescTwo = 'Cariñoso';
+const kittenDescTwo = 'Cariñoso y Antipático pero puedes acariciarle!Antipático pero puedes acariciarle!';
 const kittenRaceTwo = 'Persa';
 
 const kittenImageThree =
   'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg';
 const kittenNameThree = 'Cielo';
-const kittenDescThree = 'Antipático';
+const kittenDescThree = 'Antipático pero puedes acariciarle! Antipático pero puedes acariciarle!Antipático ';
 const kittenRaceThree = 'Burrito';
 
 /* const newForm = document.querySelector('.js-new-form');
@@ -167,8 +167,6 @@ btnAdd.addEventListener('click', (event) => {
   }
 });
 
-//NOS QUEDAMOS AQUI!!!! NO FUNCIONA
-
 //Validar formulario búsqueda
 
 const btnSearch = document.querySelector('.js-btn-search');
@@ -182,13 +180,31 @@ const labelMessageErrorSearch = document.querySelector(
 const filterKitten = (event) => {
   event.preventDefault();
 
-  const valueDescSearch = inputDescSearch.value;
-  const valueRaceSearch = inputRaceSearch.value;
+  const valueDescSearch = inputDescSearch.value.toLowerCase().trim();
+  const valueRaceSearch = inputRaceSearch.value.toLowerCase().trim();
+console.log (valueDescSearch);
 
-  if (valueDescSearch === '' || valueRaceSearch === '') {
+  if (valueDescSearch === '' && valueRaceSearch === '') {
     labelMessageErrorSearch.innerHTML = 'Debe rellenar todos los valores';
   }
+
+  if (kittenDescOne.toLowerCase().includes(valueDescSearch)) {
+    catList.innerHTML = kittenOne;
+    console.log("ruiseño");
+  }
+
+  if (kittenDescTwo.toLowerCase().includes(valueDescSearch)) {
+    catList.innerHTML += kittenTwo;
+  } 
+
+  if (kittenDescThree.toLowerCase().includes(valueDescSearch)) {
+    catList.innerHTML += kittenThree;
+  }
+
 };
+
+//NOS QUEDAMOS AQUI!!!! Hay que hacer el ejercicio 3 (mostrar la raza o no) en Funciones II
+
 
 btnSearch.addEventListener('click', filterKitten);
 
