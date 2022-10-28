@@ -1,6 +1,5 @@
 'use strict';
 
-
 const kittenImageOne = 'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg';
 const kittenNameOne = 'Anastacio';
 const kittenDescOne =
@@ -10,19 +9,23 @@ const kittenRaceOne = 'British';
 const kittenImageTwo =
   'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg';
 const kittenNameTwo = 'Fiona';
-const kittenDescTwo = 'Cariñoso y Antipático pero puedes acariciarle!Antipático pero puedes acariciarle!';
+const kittenDescTwo =
+  'Cariñoso y Antipático pero puedes acariciarle!Antipático pero puedes acariciarle!';
 const kittenRaceTwo = 'Persa';
 
 const kittenImageThree =
   'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg';
 const kittenNameThree = 'Cielo';
-const kittenDescThree = 'Antipático pero puedes acariciarle! Antipático pero puedes acariciarle!Antipático ';
+const kittenDescThree =
+  'Antipático pero puedes acariciarle! Antipático pero puedes acariciarle!Antipático ';
 const kittenRaceThree = 'Burrito';
 
+const catList = document.querySelector('.js-list');
+const input_search_desc = document.querySelector('.js_in_search_desc');
+
 /////
+
 // Crear listado de gatitos I
-
-
 
 const kittenData_1 = {
   image: 'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
@@ -32,86 +35,106 @@ const kittenData_1 = {
 };
 
 const kittenData_2 = {
-  image: 'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg',
+  image:
+    'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg',
   name: 'Fiona',
   desc: 'Cariñoso y Antipático pero puedes acariciarle!Antipático pero puedes acariciarle!',
   race: 'Persa',
 };
 
 const kittenData_3 = {
-  image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg',
+  image:
+    'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg',
   name: 'Cielo',
   desc: 'Antipático pero puedes acariciarle! Antipático pero puedes acariciarle!Antipático ',
   race: 'Burrito',
 };
 
 const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+
+//Crear listado de gatitos II
+
+function renderKittenList(kittenDataList) {
+  catList.innerHTML = '';
+
+  for (let index = 0; index < kittenDataList.length; index++) {
+    catList.innerHTML += ` <li class="card">
+  <article>
+    <img class="card_img" src=${kittenDataList[index].image} alt="gatito" />
+    <h3 class="card_title">${kittenDataList[index].name.toUpperCase()}</h3>
+    <h4 class="card_race">${kittenDataList[index].race}</h4>
+    <p class="card_description">
+    ${kittenDataList[index].desc}
+    </p>
+  </article>
+  </li>`;
+  }
+}
+
+renderKittenList(kittenDataList);
 /////
 
 /* const newForm = document.querySelector('.js-new-form');
 
 newForm.classList.remove("collapsed"); */
 
-const catList = document.querySelector('.js-list');
+// let html = '';
+// /*
+// /* Agregar el código del li desde HTMl
+// Repetir este proceso por cada gatito */
+// if (kittenRaceOne === '') {
+//   html = `No se ha especificado la raza`;
+// } else {
+//   html = kittenRaceOne;
+// }
+// const kittenOne = ` <li class="card">
+// <article>
+//   <img class="card_img" src=${kittenImageOne} alt="gatito" />
+//   <h3 class="card_title">${kittenNameOne.toUpperCase()}</h3>
+//   <h4 class="card_race">${html}</h4>
+//   <p class="card_description">
+//   ${kittenDescOne}
+//   </p>
+// </article>
+// </li>`;
 
-let html = '';
+// if (kittenRaceTwo === '') {
+//   html = `No se ha especificado la raza`;
+// } else {
+//   html = kittenRaceTwo;
+// }
+// const kittenTwo = ` <li class="card">
+// <article>
+//   <img class="card_img" src=${kittenImageTwo} alt="gatito" />
+//   <h3 class="card_title">${kittenNameTwo.toUpperCase()}</h3>
+//   <h4 class="card_race">${html}</h4>
+//   <p class="card_description">
+//   ${kittenDescTwo}
+//   </p>
+// </article>
+// </li>`;
 
-/* Agregar el código del li desde HTMl 
-Repetir este proceso por cada gatito */
-if (kittenRaceOne === '') {
-  html = `No se ha especificado la raza`;
-} else {
-  html = kittenRaceOne;
-}
-const kittenOne = ` <li class="card">
-<article>
-  <img class="card_img" src=${kittenImageOne} alt="gatito" />
-  <h3 class="card_title">${kittenNameOne.toUpperCase()}</h3>
-  <h4 class="card_race">${html}</h4>
-  <p class="card_description">
-  ${kittenDescOne}
-  </p>
-</article>
-</li>`;
+// if (kittenRaceThree === '') {
+//   html = `No se ha especificado la raza`;
+// } else {
+//   html = kittenRaceThree;
+// }
 
-if (kittenRaceTwo === '') {
-  html = `No se ha especificado la raza`;
-} else {
-  html = kittenRaceTwo;
-}
-const kittenTwo = ` <li class="card">
-<article>
-  <img class="card_img" src=${kittenImageTwo} alt="gatito" />
-  <h3 class="card_title">${kittenNameTwo.toUpperCase()}</h3>
-  <h4 class="card_race">${html}</h4>
-  <p class="card_description">
-  ${kittenDescTwo}
-  </p>
-</article>
-</li>`;
+// const kittenThree = ` <li class="card">
+// <article>
+//   <img class="card_img" src=${kittenImageThree} alt="gatito" />
+//   <h3 class="card_title">${kittenNameThree.toUpperCase()}</h3>
+//   <h4 class="card_race">${html}</h4>
+//   <p class="card_description">
+//   ${kittenDescThree}
+//   </p>
+// </article>
+// </li>`;
 
-if (kittenRaceThree === '') {
-  html = `No se ha especificado la raza`;
-} else {
-  html = kittenRaceThree;
-}
+// const content = kittenOne + kittenTwo + kittenThree;
 
-const kittenThree = ` <li class="card">
-<article>
-  <img class="card_img" src=${kittenImageThree} alt="gatito" />
-  <h3 class="card_title">${kittenNameThree.toUpperCase()}</h3>
-  <h4 class="card_race">${html}</h4>
-  <p class="card_description">
-  ${kittenDescThree}
-  </p>
-</article>
-</li>`;
+// catList.innerHTML = content;
 
-const content = kittenOne + kittenTwo + kittenThree;
-
-catList.innerHTML = content;
-/*  */
-const input_search_desc = document.querySelector('.js_in_search_desc');
 /* 
 input_search_desc.value = "Ruiseño";
 const descrSearchText = input_search_desc.value;
@@ -122,13 +145,13 @@ const descrSearchTextTwo = input_search_desc.value;
 input_search_desc.value = "Antipático";
 const descrSearchTextThree = input_search_desc.value; */
 /*  */
-if (input_search_desc.value === 'Risueño') {
-  catList.innerHTML = kittenOne;
-} else if (input_search_desc.value === 'Cariñoso') {
-  catList.innerHTML = kittenTwo;
-} else if (input_search_desc.value === 'Antipático') {
-  catList.innerHTML = kittenThree;
-}
+// if (input_search_desc.value === 'Risueño') {
+//   catList.innerHTML = kittenOne;
+// } else if (input_search_desc.value === 'Cariñoso') {
+//   catList.innerHTML = kittenTwo;
+// } else if (input_search_desc.value === 'Antipático') {
+//   catList.innerHTML = kittenThree;
+// }
 
 /*  input_search_desc.value = ''; */
 
@@ -207,41 +230,59 @@ const labelMessageErrorSearch = document.querySelector(
   '.js-label-error-search'
 );
 
+/////////////////  2. Filtrar por descripción (BUCLES)
+////¿QUE FALLA? IF? FUNCION RENDERKITTEN?
+
+function renderKitten(url, desc, name, race) {
+  return ` <li class="card">
+  <article>
+    <img class="card_img" src=${url} alt="gatito" />
+    <h3 class="card_title">${name}</h3>
+    <h4 class="card_race">${race}</h4>
+    <p class="card_description">
+    ${desc}
+    </p>
+  </article>
+  </li>`;
+}
+
 const filterKitten = (event) => {
   event.preventDefault();
 
   const valueDescSearch = inputDescSearch.value.toLowerCase().trim();
   const valueRaceSearch = inputRaceSearch.value.toLowerCase().trim();
 
-if (valueDescSearch === '' && valueRaceSearch === '') {
-  labelMessageErrorSearch.innerHTML = 'Debe rellenar todos los valores';
-}
-else {
-  renderDesc(valueDescSearch);
-  renderRace(valueRaceSearch);
-}
+  if (valueDescSearch === '' && valueRaceSearch === '') {
+    labelMessageErrorSearch.innerHTML = 'Debe rellenar todos los valores';
+  }
 
-  
+  catList.innerHTML = '';
+  for (const kittenItem of kittenDataList) {
+    if (kittenItem.desc.toLowerCase().includes(valueDescSearch)) {
+      catList.innerHTML += renderKitten(
+        kittenItem['image'],
+        kittenItem['desc'],
+        kittenItem['name'],
+        kittenItem['race']
+      );
+      console.log(kittenItem['image']);
+    }
+  }
 };
 
-function renderDesc (desc){
-
-
-
+function renderDesc(desc) {
   if (kittenDescOne.toLowerCase().includes(desc)) {
     catList.innerHTML = kittenOne;
-  
   }
 
   if (kittenDescTwo.toLowerCase().includes(desc)) {
     catList.innerHTML += kittenTwo;
-  } 
+  }
 
   if (kittenDescThree.toLowerCase().includes(desc)) {
     catList.innerHTML += kittenThree;
   }
 }
-
 
 btnSearch.addEventListener('click', filterKitten);
 
@@ -280,43 +321,20 @@ function handleClickNewCatForm(event) {
 
 /////  Crear el gatito en HTML
 
-function renderKitten(url, desc, name, race) {
-  catList.innerHTML += ` <li class="card">
-  <article>
-    <img class="card_img" src=${url} alt="gatito" />
-    <h3 class="card_title">${name}</h3>
-    <h4 class="card_race">${race}</h4>
-    <p class="card_description">
-    ${desc}
-    </p>
-  </article>
-  </li>`;
-}
-
-
-function renderRace(race){
-  
+function renderRace(race) {
   if (race === '') {
     labelMessageErrorSearch.innerHTML = 'No se ha especificado la raza';
   }
 
   if (kittenRaceOne.toLowerCase().includes(race)) {
     catList.innerHTML = kittenOne;
-
   }
 
   if (kittenRaceTwo.toLowerCase().includes(race)) {
     catList.innerHTML += kittenTwo;
-  } 
+  }
 
   if (kittenRaceThree.toLowerCase().includes(race)) {
     catList.innerHTML += kittenThree;
   }
-
-
 }
-
-
-
-
-
